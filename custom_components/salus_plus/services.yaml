@@ -1,0 +1,11 @@
+set_schedule:
+  target:
+    entity:
+      integration: salus_plus
+      domain: climate
+  fields:
+    points:
+      required: true
+      example: '[{"time": "06:00", "temperature": 21}, {"time": "22:00", "temperature": 19}]'
+      selector:
+        object:

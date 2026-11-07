@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Salus UGE600 gateway",
+        "description": "Local gateway address and the EUID printed on the gateway label.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the gateway"
+    },
+    "abort": {
+      "already_configured": "Gateway is already configured"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Heating demand"
+      },
+      "problem": {
+        "name": "Problem"
+      },
+      "connected": {
+        "name": "Connected"
+      },
+      "boiler_relay": {
+        "name": "Boiler relay"
+      },
+      "cloud_connected": {
+        "name": "Cloud connection"
+      },
+      "lan_connected": {
+        "name": "LAN connection"
+      },
+      "wc_zone": {
+        "name": "Zone {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Pump and boiler demand (derived)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Minimum heating setpoint"
+      },
+      "max_heat_setpoint": {
+        "name": "Maximum heating setpoint"
+      },
+      "min_cool_setpoint": {
+        "name": "Minimum cooling setpoint"
+      },
+      "max_cool_setpoint": {
+        "name": "Maximum cooling setpoint"
+      },
+      "temperature_calibration": {
+        "name": "Temperature calibration"
+      },
+      "standby_heating_setpoint": {
+        "name": "Frost protection setpoint"
+      },
+      "max_floor_temp_heating": {
+        "name": "Max floor temperature (heating)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Min floor temperature (heating)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Min floor temperature (cooling)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperature"
+      },
+      "humidity": {
+        "name": "Humidity"
+      },
+      "min_off_time_heating": {
+        "name": "Min off time (heating)"
+      },
+      "min_off_time_cooling": {
+        "name": "Min off time (cooling)"
+      },
+      "language": {
+        "name": "Display language index"
+      },
+      "out_sensor_probe": {
+        "name": "External sensor probe"
+      },
+      "out_sensor_type": {
+        "name": "External sensor type"
+      },
+      "schedule_type": {
+        "name": "Schedule type"
+      },
+      "signal_strength": {
+        "name": "Signal strength"
+      },
+      "link_quality": {
+        "name": "Link quality"
+      },
+      "ip_address": {
+        "name": "IP address"
+      },
+      "zigbee_channel": {
+        "name": "Zigbee channel"
+      },
+      "zigbee_firmware": {
+        "name": "Zigbee firmware"
+      },
+      "schedule": {
+        "name": "Schedule (Mon–Sun)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Child lock"
+      },
+      "display_time": {
+        "name": "Show time on display"
+      },
+      "display_humidity": {
+        "name": "Show humidity on display"
+      },
+      "display_floor_temperature": {
+        "name": "Show floor temperature on display"
+      },
+      "valve_protection": {
+        "name": "Valve protection"
+      },
+      "optimum_start": {
+        "name": "Optimum start"
+      },
+      "optimum_stop": {
+        "name": "Optimum stop"
+      },
+      "unlock_from_thermostat": {
+        "name": "Allow unlock on thermostat"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Allow setpoint change when locked"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Time format",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Temperature unit",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Display resolution",
+        "state": {
+          "0_5": "0.5 °C",
+          "0_1": "0.1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Comfort warm floor",
+        "state": {
+          "off": "Off",
+          "level_1": "Level 1",
+          "level_2": "Level 2",
+          "level_3": "Level 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Control algorithm",
+        "state": {
+          "itlc_underfloor": "ITLC underfloor",
+          "itlc_radiators": "ITLC radiators",
+          "itlc_electrical": "ITLC electric",
+          "thb_actuator": "THB actuator"
+        }
+      },
+      "s1_s2_function": {
+        "name": "S1/S2 input",
+        "state": {
+          "disabled": "Disabled",
+          "floor_sensor": "Floor sensor",
+          "external_sensor": "External sensor",
+          "occupancy_sensor": "Occupancy sensor",
+          "run_onetouch": "Run OneTouch",
+          "changeover": "Changeover"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Internal relay",
+        "state": {
+          "disabled": "Disabled",
+          "heat_and_cool": "Heat and cool",
+          "heat_only": "Heat only",
+          "cool_only": "Cool only"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Relay contact type",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Cooling hysteresis",
+        "state": {
+          "0_25": "±0.25 °C",
+          "0_5": "±0.5 °C",
+          "1_0": "±1.0 °C",
+          "1_5": "±1.5 °C",
+          "2_0": "±2.0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Schedule",
+              "temporary_hold": "Temporary hold",
+              "permanent_hold": "Permanent hold",
+              "away": "Away"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Set weekly schedule",
+      "description": "Replace the thermostat's Monday–Sunday heating program (1–6 switch points, stored on the thermostat).",
+      "fields": {
+        "points": {
+          "name": "Switch points",
+          "description": "List of {time: \"HH:MM\", temperature: °C}, e.g. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "entity": {
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "default": "mdi:thermostat",
+            "state": {
+              "schedule": "mdi:calendar-clock",
+              "temporary_hold": "mdi:timer-sand",
+              "permanent_hold": "mdi:pin",
+              "away": "mdi:home-export-outline"
+            }
+          }
+        }
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "default": "mdi:lock",
+        "state": {
+          "off": "mdi:lock-open-variant"
+        }
+      },
+      "display_time": {
+        "default": "mdi:clock-outline"
+      },
+      "display_humidity": {
+        "default": "mdi:water-percent"
+      },
+      "display_floor_temperature": {
+        "default": "mdi:floor-plan"
+      },
+      "valve_protection": {
+        "default": "mdi:valve"
+      },
+      "optimum_start": {
+        "default": "mdi:clock-start"
+      },
+      "optimum_stop": {
+        "default": "mdi:clock-end"
+      },
+      "unlock_from_thermostat": {
+        "default": "mdi:lock-open-check"
+      },
+      "adjust_setpoint_when_locked": {
+        "default": "mdi:lock-plus"
+      }
+    },
+    "number": {
+      "temperature_calibration": {
+        "default": "mdi:thermometer-check"
+      },
+      "standby_heating_setpoint": {
+        "default": "mdi:snowflake-thermometer"
+      },
+      "max_floor_temp_heating": {
+        "default": "mdi:heating-coil"
+      },
+      "min_floor_temp_heating": {
+        "default": "mdi:heating-coil"
+      }
+    },
+    "select": {
+      "time_format": {
+        "default": "mdi:clock-time-four-outline"
+      },
+      "temperature_unit": {
+        "default": "mdi:temperature-celsius"
+      },
+      "display_resolution": {
+        "default": "mdi:decimal"
+      },
+      "comfort_warm_floor": {
+        "default": "mdi:foot-print"
+      },
+      "control_algorithm": {
+        "default": "mdi:function-variant"
+      }
+    },
+    "binary_sensor": {
+      "boiler_relay": {
+        "default": "mdi:water-boiler-off",
+        "state": {
+          "on": "mdi:water-boiler"
+        }
+      },
+      "cloud_connected": {
+        "default": "mdi:cloud-check-outline",
+        "state": {
+          "off": "mdi:cloud-off-outline"
+        }
+      },
+      "lan_connected": {
+        "default": "mdi:ethernet"
+      },
+      "wc_zone": {
+        "default": "mdi:pipe-valve"
+      },
+      "wc_demand": {
+        "default": "mdi:pump-off",
+        "state": {
+          "on": "mdi:pump"
+        }
+      }
+    },
+    "sensor": {
+      "zigbee_channel": {
+        "default": "mdi:zigbee"
+      },
+      "zigbee_firmware": {
+        "default": "mdi:chip"
+      },
+      "ip_address": {
+        "default": "mdi:ip-network"
+      },
+      "schedule": {
+        "default": "mdi:calendar-week"
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "service": "mdi:calendar-edit"
+    }
+  }
+}

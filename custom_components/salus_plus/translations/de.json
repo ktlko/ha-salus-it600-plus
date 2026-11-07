@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Salus-UGE600-Gateway",
+        "description": "Lokale Adresse des Gateways und die EUID vom Etikett des Gateways.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Gateway nicht möglich"
+    },
+    "abort": {
+      "already_configured": "Gateway ist bereits eingerichtet"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Heizanforderung"
+      },
+      "problem": {
+        "name": "Problem"
+      },
+      "connected": {
+        "name": "Verbunden"
+      },
+      "boiler_relay": {
+        "name": "Kesselrelais"
+      },
+      "cloud_connected": {
+        "name": "Cloud-Verbindung"
+      },
+      "lan_connected": {
+        "name": "LAN-Verbindung"
+      },
+      "wc_zone": {
+        "name": "Zone {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Pumpen- und Kesselanforderung (abgeleitet)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Minimale Heiz-Solltemperatur"
+      },
+      "max_heat_setpoint": {
+        "name": "Maximale Heiz-Solltemperatur"
+      },
+      "min_cool_setpoint": {
+        "name": "Minimale Kühl-Solltemperatur"
+      },
+      "max_cool_setpoint": {
+        "name": "Maximale Kühl-Solltemperatur"
+      },
+      "temperature_calibration": {
+        "name": "Temperaturkalibrierung"
+      },
+      "standby_heating_setpoint": {
+        "name": "Frostschutz-Solltemperatur"
+      },
+      "max_floor_temp_heating": {
+        "name": "Max. Fußbodentemperatur (Heizen)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Min. Fußbodentemperatur (Heizen)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Min. Fußbodentemperatur (Kühlen)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "humidity": {
+        "name": "Luftfeuchtigkeit"
+      },
+      "min_off_time_heating": {
+        "name": "Min. Ausschaltzeit (Heizen)"
+      },
+      "min_off_time_cooling": {
+        "name": "Min. Ausschaltzeit (Kühlen)"
+      },
+      "language": {
+        "name": "Index Displaysprache"
+      },
+      "out_sensor_probe": {
+        "name": "Externer Fühler"
+      },
+      "out_sensor_type": {
+        "name": "Typ des externen Fühlers"
+      },
+      "schedule_type": {
+        "name": "Zeitprogrammtyp"
+      },
+      "signal_strength": {
+        "name": "Signalstärke"
+      },
+      "link_quality": {
+        "name": "Verbindungsqualität"
+      },
+      "ip_address": {
+        "name": "IP-Adresse"
+      },
+      "zigbee_channel": {
+        "name": "Zigbee-Kanal"
+      },
+      "zigbee_firmware": {
+        "name": "Zigbee-Firmware"
+      },
+      "schedule": {
+        "name": "Zeitprogramm (Mo–So)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Kindersicherung"
+      },
+      "display_time": {
+        "name": "Uhrzeit im Display anzeigen"
+      },
+      "display_humidity": {
+        "name": "Luftfeuchtigkeit im Display anzeigen"
+      },
+      "display_floor_temperature": {
+        "name": "Fußbodentemperatur im Display anzeigen"
+      },
+      "valve_protection": {
+        "name": "Ventilschutz"
+      },
+      "optimum_start": {
+        "name": "Optimaler Start"
+      },
+      "optimum_stop": {
+        "name": "Optimaler Stopp"
+      },
+      "unlock_from_thermostat": {
+        "name": "Entsperren am Thermostat erlauben"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Sollwertänderung bei Sperre erlauben"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Zeitformat",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Temperatureinheit",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Displayauflösung",
+        "state": {
+          "0_5": "0,5 °C",
+          "0_1": "0,1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Komfort warmer Boden",
+        "state": {
+          "off": "Aus",
+          "level_1": "Stufe 1",
+          "level_2": "Stufe 2",
+          "level_3": "Stufe 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Regelalgorithmus",
+        "state": {
+          "itlc_underfloor": "ITLC Fußbodenheizung",
+          "itlc_radiators": "ITLC Heizkörper",
+          "itlc_electrical": "ITLC elektrisch",
+          "thb_actuator": "THB-Stellantrieb"
+        }
+      },
+      "s1_s2_function": {
+        "name": "Eingang S1/S2",
+        "state": {
+          "disabled": "Deaktiviert",
+          "floor_sensor": "Bodenfühler",
+          "external_sensor": "Externer Fühler",
+          "occupancy_sensor": "Anwesenheitssensor",
+          "run_onetouch": "OneTouch ausführen",
+          "changeover": "Umschaltung"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Internes Relais",
+        "state": {
+          "disabled": "Deaktiviert",
+          "heat_and_cool": "Heizen und Kühlen",
+          "heat_only": "Nur Heizen",
+          "cool_only": "Nur Kühlen"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Relaiskontakttyp",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Kühlhysterese",
+        "state": {
+          "0_25": "±0,25 °C",
+          "0_5": "±0,5 °C",
+          "1_0": "±1,0 °C",
+          "1_5": "±1,5 °C",
+          "2_0": "±2,0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Zeitprogramm",
+              "temporary_hold": "Vorübergehend",
+              "permanent_hold": "Dauerhaft",
+              "away": "Abwesend"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Wochenprogramm einstellen",
+      "description": "Ersetzt das Heizprogramm Mo–So des Thermostats (1–6 Schaltpunkte, im Thermostat gespeichert).",
+      "fields": {
+        "points": {
+          "name": "Schaltpunkte",
+          "description": "Liste aus {time: \"HH:MM\", temperature: °C}, z. B. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}

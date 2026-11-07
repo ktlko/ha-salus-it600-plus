@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bramka Salus UGE600",
+        "description": "Lokalny adres bramki i EUID z etykiety bramki.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można połączyć się z bramką"
+    },
+    "abort": {
+      "already_configured": "Bramka jest już skonfigurowana"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Żądanie grzania"
+      },
+      "problem": {
+        "name": "Problem"
+      },
+      "connected": {
+        "name": "Połączony"
+      },
+      "boiler_relay": {
+        "name": "Przekaźnik kotła"
+      },
+      "cloud_connected": {
+        "name": "Połączenie z chmurą"
+      },
+      "lan_connected": {
+        "name": "Połączenie LAN"
+      },
+      "wc_zone": {
+        "name": "Strefa {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Żądanie pompy i kotła (pochodne)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Minimalna temperatura grzania"
+      },
+      "max_heat_setpoint": {
+        "name": "Maksymalna temperatura grzania"
+      },
+      "min_cool_setpoint": {
+        "name": "Minimalna temperatura chłodzenia"
+      },
+      "max_cool_setpoint": {
+        "name": "Maksymalna temperatura chłodzenia"
+      },
+      "temperature_calibration": {
+        "name": "Kalibracja temperatury"
+      },
+      "standby_heating_setpoint": {
+        "name": "Temperatura ochrony przed zamarzaniem"
+      },
+      "max_floor_temp_heating": {
+        "name": "Maks. temperatura podłogi (grzanie)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Min. temperatura podłogi (grzanie)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Min. temperatura podłogi (chłodzenie)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Wilgotność"
+      },
+      "min_off_time_heating": {
+        "name": "Min. czas wyłączenia (grzanie)"
+      },
+      "min_off_time_cooling": {
+        "name": "Min. czas wyłączenia (chłodzenie)"
+      },
+      "language": {
+        "name": "Indeks języka wyświetlacza"
+      },
+      "out_sensor_probe": {
+        "name": "Czujnik zewnętrzny"
+      },
+      "out_sensor_type": {
+        "name": "Typ czujnika zewnętrznego"
+      },
+      "schedule_type": {
+        "name": "Typ harmonogramu"
+      },
+      "signal_strength": {
+        "name": "Siła sygnału"
+      },
+      "link_quality": {
+        "name": "Jakość połączenia"
+      },
+      "ip_address": {
+        "name": "Adres IP"
+      },
+      "zigbee_channel": {
+        "name": "Kanał Zigbee"
+      },
+      "zigbee_firmware": {
+        "name": "Firmware Zigbee"
+      },
+      "schedule": {
+        "name": "Harmonogram (pon.–niedz.)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Blokada rodzicielska"
+      },
+      "display_time": {
+        "name": "Pokaż godzinę na wyświetlaczu"
+      },
+      "display_humidity": {
+        "name": "Pokaż wilgotność na wyświetlaczu"
+      },
+      "display_floor_temperature": {
+        "name": "Pokaż temperaturę podłogi na wyświetlaczu"
+      },
+      "valve_protection": {
+        "name": "Ochrona zaworu"
+      },
+      "optimum_start": {
+        "name": "Optymalny start"
+      },
+      "optimum_stop": {
+        "name": "Optymalny stop"
+      },
+      "unlock_from_thermostat": {
+        "name": "Zezwól na odblokowanie na termostacie"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Zezwól na zmianę temperatury przy blokadzie"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Format czasu",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Jednostka temperatury",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Rozdzielczość wyświetlacza",
+        "state": {
+          "0_5": "0,5 °C",
+          "0_1": "0,1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Komfortowa ciepła podłoga",
+        "state": {
+          "off": "Wyłączone",
+          "level_1": "Poziom 1",
+          "level_2": "Poziom 2",
+          "level_3": "Poziom 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Algorytm sterowania",
+        "state": {
+          "itlc_underfloor": "ITLC ogrzewanie podłogowe",
+          "itlc_radiators": "ITLC grzejniki",
+          "itlc_electrical": "ITLC elektryczne",
+          "thb_actuator": "Siłownik THB"
+        }
+      },
+      "s1_s2_function": {
+        "name": "Wejście S1/S2",
+        "state": {
+          "disabled": "Wyłączone",
+          "floor_sensor": "Czujnik podłogowy",
+          "external_sensor": "Czujnik zewnętrzny",
+          "occupancy_sensor": "Czujnik obecności",
+          "run_onetouch": "Uruchom OneTouch",
+          "changeover": "Przełączanie trybu"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Przekaźnik wewnętrzny",
+        "state": {
+          "disabled": "Wyłączony",
+          "heat_and_cool": "Grzanie i chłodzenie",
+          "heat_only": "Tylko grzanie",
+          "cool_only": "Tylko chłodzenie"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Typ styku przekaźnika",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Histereza chłodzenia",
+        "state": {
+          "0_25": "±0,25 °C",
+          "0_5": "±0,5 °C",
+          "1_0": "±1,0 °C",
+          "1_5": "±1,5 °C",
+          "2_0": "±2,0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Według harmonogramu",
+              "temporary_hold": "Tymczasowo",
+              "permanent_hold": "Na stałe",
+              "away": "Poza domem"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Ustaw harmonogram tygodniowy",
+      "description": "Zastępuje program grzania termostatu pon.–niedz. (1–6 punktów przełączania, zapisanych w termostacie).",
+      "fields": {
+        "points": {
+          "name": "Punkty przełączania",
+          "description": "Lista {time: \"HH:MM\", temperature: °C}, np. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}

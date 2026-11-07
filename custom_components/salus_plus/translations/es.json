@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pasarela Salus UGE600",
+        "description": "Dirección local de la pasarela y el EUID impreso en su etiqueta.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede conectar con la pasarela"
+    },
+    "abort": {
+      "already_configured": "La pasarela ya está configurada"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Demanda de calefacción"
+      },
+      "problem": {
+        "name": "Problema"
+      },
+      "connected": {
+        "name": "Conectado"
+      },
+      "boiler_relay": {
+        "name": "Relé de la caldera"
+      },
+      "cloud_connected": {
+        "name": "Conexión a la nube"
+      },
+      "lan_connected": {
+        "name": "Conexión LAN"
+      },
+      "wc_zone": {
+        "name": "Zona {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Demanda de bomba y caldera (derivada)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Consigna mínima de calefacción"
+      },
+      "max_heat_setpoint": {
+        "name": "Consigna máxima de calefacción"
+      },
+      "min_cool_setpoint": {
+        "name": "Consigna mínima de refrigeración"
+      },
+      "max_cool_setpoint": {
+        "name": "Consigna máxima de refrigeración"
+      },
+      "temperature_calibration": {
+        "name": "Calibración de temperatura"
+      },
+      "standby_heating_setpoint": {
+        "name": "Consigna antiheladas"
+      },
+      "max_floor_temp_heating": {
+        "name": "Temperatura máx. del suelo (calefacción)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Temperatura mín. del suelo (calefacción)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Temperatura mín. del suelo (refrigeración)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Humedad"
+      },
+      "min_off_time_heating": {
+        "name": "Tiempo mín. apagado (calefacción)"
+      },
+      "min_off_time_cooling": {
+        "name": "Tiempo mín. apagado (refrigeración)"
+      },
+      "language": {
+        "name": "Índice de idioma de la pantalla"
+      },
+      "out_sensor_probe": {
+        "name": "Sonda externa"
+      },
+      "out_sensor_type": {
+        "name": "Tipo de sonda externa"
+      },
+      "schedule_type": {
+        "name": "Tipo de programación"
+      },
+      "signal_strength": {
+        "name": "Intensidad de la señal"
+      },
+      "link_quality": {
+        "name": "Calidad del enlace"
+      },
+      "ip_address": {
+        "name": "Dirección IP"
+      },
+      "zigbee_channel": {
+        "name": "Canal Zigbee"
+      },
+      "zigbee_firmware": {
+        "name": "Firmware Zigbee"
+      },
+      "schedule": {
+        "name": "Programación (lun.–dom.)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Bloqueo infantil"
+      },
+      "display_time": {
+        "name": "Mostrar la hora en pantalla"
+      },
+      "display_humidity": {
+        "name": "Mostrar la humedad en pantalla"
+      },
+      "display_floor_temperature": {
+        "name": "Mostrar la temperatura del suelo en pantalla"
+      },
+      "valve_protection": {
+        "name": "Protección de válvula"
+      },
+      "optimum_start": {
+        "name": "Arranque óptimo"
+      },
+      "optimum_stop": {
+        "name": "Parada óptima"
+      },
+      "unlock_from_thermostat": {
+        "name": "Permitir desbloqueo en el termostato"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Permitir cambiar la consigna con bloqueo"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Formato de hora",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Unidad de temperatura",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Resolución de pantalla",
+        "state": {
+          "0_5": "0,5 °C",
+          "0_1": "0,1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Suelo cálido confort",
+        "state": {
+          "off": "Apagado",
+          "level_1": "Nivel 1",
+          "level_2": "Nivel 2",
+          "level_3": "Nivel 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Algoritmo de control",
+        "state": {
+          "itlc_underfloor": "ITLC suelo radiante",
+          "itlc_radiators": "ITLC radiadores",
+          "itlc_electrical": "ITLC eléctrico",
+          "thb_actuator": "Actuador THB"
+        }
+      },
+      "s1_s2_function": {
+        "name": "Entrada S1/S2",
+        "state": {
+          "disabled": "Desactivada",
+          "floor_sensor": "Sonda de suelo",
+          "external_sensor": "Sonda externa",
+          "occupancy_sensor": "Sensor de presencia",
+          "run_onetouch": "Ejecutar OneTouch",
+          "changeover": "Conmutación"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Relé interno",
+        "state": {
+          "disabled": "Desactivado",
+          "heat_and_cool": "Calefacción y refrigeración",
+          "heat_only": "Solo calefacción",
+          "cool_only": "Solo refrigeración"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Tipo de contacto del relé",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Histéresis de refrigeración",
+        "state": {
+          "0_25": "±0,25 °C",
+          "0_5": "±0,5 °C",
+          "1_0": "±1,0 °C",
+          "1_5": "±1,5 °C",
+          "2_0": "±2,0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Programación",
+              "temporary_hold": "Temporal",
+              "permanent_hold": "Permanente",
+              "away": "Ausente"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Establecer programación semanal",
+      "description": "Sustituye el programa de calefacción lun.–dom. del termostato (1–6 puntos de cambio, guardados en el termostato).",
+      "fields": {
+        "points": {
+          "name": "Puntos de cambio",
+          "description": "Lista de {time: \"HH:MM\", temperature: °C}, p. ej. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}

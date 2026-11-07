@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Gateway Salus UGE600",
+        "description": "Indirizzo locale del gateway ed EUID stampato sull'etichetta del gateway.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossibile connettersi al gateway"
+    },
+    "abort": {
+      "already_configured": "Il gateway è già configurato"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Richiesta di riscaldamento"
+      },
+      "problem": {
+        "name": "Problema"
+      },
+      "connected": {
+        "name": "Connesso"
+      },
+      "boiler_relay": {
+        "name": "Relè caldaia"
+      },
+      "cloud_connected": {
+        "name": "Connessione cloud"
+      },
+      "lan_connected": {
+        "name": "Connessione LAN"
+      },
+      "wc_zone": {
+        "name": "Zona {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Richiesta pompa e caldaia (derivata)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Setpoint minimo riscaldamento"
+      },
+      "max_heat_setpoint": {
+        "name": "Setpoint massimo riscaldamento"
+      },
+      "min_cool_setpoint": {
+        "name": "Setpoint minimo raffrescamento"
+      },
+      "max_cool_setpoint": {
+        "name": "Setpoint massimo raffrescamento"
+      },
+      "temperature_calibration": {
+        "name": "Calibrazione temperatura"
+      },
+      "standby_heating_setpoint": {
+        "name": "Setpoint antigelo"
+      },
+      "max_floor_temp_heating": {
+        "name": "Temperatura max pavimento (riscaldamento)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Temperatura min pavimento (riscaldamento)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Temperatura min pavimento (raffrescamento)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperatura"
+      },
+      "humidity": {
+        "name": "Umidità"
+      },
+      "min_off_time_heating": {
+        "name": "Tempo min di spegnimento (riscaldamento)"
+      },
+      "min_off_time_cooling": {
+        "name": "Tempo min di spegnimento (raffrescamento)"
+      },
+      "language": {
+        "name": "Indice lingua del display"
+      },
+      "out_sensor_probe": {
+        "name": "Sonda esterna"
+      },
+      "out_sensor_type": {
+        "name": "Tipo di sonda esterna"
+      },
+      "schedule_type": {
+        "name": "Tipo di programma"
+      },
+      "signal_strength": {
+        "name": "Potenza del segnale"
+      },
+      "link_quality": {
+        "name": "Qualità del collegamento"
+      },
+      "ip_address": {
+        "name": "Indirizzo IP"
+      },
+      "zigbee_channel": {
+        "name": "Canale Zigbee"
+      },
+      "zigbee_firmware": {
+        "name": "Firmware Zigbee"
+      },
+      "schedule": {
+        "name": "Programma (lun–dom)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Blocco bambini"
+      },
+      "display_time": {
+        "name": "Mostra l'ora sul display"
+      },
+      "display_humidity": {
+        "name": "Mostra l'umidità sul display"
+      },
+      "display_floor_temperature": {
+        "name": "Mostra la temperatura del pavimento sul display"
+      },
+      "valve_protection": {
+        "name": "Protezione valvola"
+      },
+      "optimum_start": {
+        "name": "Avvio ottimale"
+      },
+      "optimum_stop": {
+        "name": "Arresto ottimale"
+      },
+      "unlock_from_thermostat": {
+        "name": "Consenti lo sblocco dal termostato"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Consenti la modifica del setpoint con blocco"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Formato ora",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Unità di temperatura",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Risoluzione del display",
+        "state": {
+          "0_5": "0,5 °C",
+          "0_1": "0,1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Pavimento caldo comfort",
+        "state": {
+          "off": "Spento",
+          "level_1": "Livello 1",
+          "level_2": "Livello 2",
+          "level_3": "Livello 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Algoritmo di regolazione",
+        "state": {
+          "itlc_underfloor": "ITLC pavimento radiante",
+          "itlc_radiators": "ITLC radiatori",
+          "itlc_electrical": "ITLC elettrico",
+          "thb_actuator": "Attuatore THB"
+        }
+      },
+      "s1_s2_function": {
+        "name": "Ingresso S1/S2",
+        "state": {
+          "disabled": "Disattivato",
+          "floor_sensor": "Sonda pavimento",
+          "external_sensor": "Sonda esterna",
+          "occupancy_sensor": "Sensore di presenza",
+          "run_onetouch": "Esegui OneTouch",
+          "changeover": "Commutazione"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Relè interno",
+        "state": {
+          "disabled": "Disattivato",
+          "heat_and_cool": "Riscaldamento e raffrescamento",
+          "heat_only": "Solo riscaldamento",
+          "cool_only": "Solo raffrescamento"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Tipo di contatto del relè",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Isteresi di raffrescamento",
+        "state": {
+          "0_25": "±0,25 °C",
+          "0_5": "±0,5 °C",
+          "1_0": "±1,0 °C",
+          "1_5": "±1,5 °C",
+          "2_0": "±2,0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Programma",
+              "temporary_hold": "Temporaneo",
+              "permanent_hold": "Permanente",
+              "away": "Fuori casa"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Imposta programma settimanale",
+      "description": "Sostituisce il programma di riscaldamento lun–dom del termostato (1–6 punti di commutazione, salvati nel termostato).",
+      "fields": {
+        "points": {
+          "name": "Punti di commutazione",
+          "description": "Elenco di {time: \"HH:MM\", temperature: °C}, ad es. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}

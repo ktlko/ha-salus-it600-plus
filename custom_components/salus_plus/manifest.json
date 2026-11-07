@@ -1,0 +1,21 @@
+{
+  "domain": "salus_plus",
+  "name": "Salus iT600 Plus",
+  "codeowners": [
+    "@ktlko"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/ktlko/ha-salus-it600-plus",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/ktlko/ha-salus-it600-plus/issues",
+  "loggers": [
+    "salus_it600",
+    "custom_components.salus_plus"
+  ],
+  "requirements": [
+    "salus-it600-client==0.7.0"
+  ],
+  "version": "1.0.0"
+}

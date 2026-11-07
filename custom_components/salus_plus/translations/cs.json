@@ -1,0 +1,254 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Brána Salus UGE600",
+        "description": "Místní adresa brány a EUID ze štítku brány.",
+        "data": {
+          "host": "Host",
+          "euid": "EUID"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nelze se připojit k bráně"
+    },
+    "abort": {
+      "already_configured": "Brána už je nastavená"
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running": {
+        "name": "Požadavek na topení"
+      },
+      "problem": {
+        "name": "Problém"
+      },
+      "connected": {
+        "name": "Připojeno"
+      },
+      "boiler_relay": {
+        "name": "Relé kotle"
+      },
+      "cloud_connected": {
+        "name": "Připojení ke cloudu"
+      },
+      "lan_connected": {
+        "name": "Připojení LAN"
+      },
+      "wc_zone": {
+        "name": "Zóna {zone} – {room}"
+      },
+      "wc_demand": {
+        "name": "Požadavek na čerpadlo a kotel (odvozený)"
+      }
+    },
+    "number": {
+      "min_heat_setpoint": {
+        "name": "Minimální teplota topení"
+      },
+      "max_heat_setpoint": {
+        "name": "Maximální teplota topení"
+      },
+      "min_cool_setpoint": {
+        "name": "Minimální teplota chlazení"
+      },
+      "max_cool_setpoint": {
+        "name": "Maximální teplota chlazení"
+      },
+      "temperature_calibration": {
+        "name": "Kalibrace teploty"
+      },
+      "standby_heating_setpoint": {
+        "name": "Protimrazová teplota"
+      },
+      "max_floor_temp_heating": {
+        "name": "Max. teplota podlahy (topení)"
+      },
+      "min_floor_temp_heating": {
+        "name": "Min. teplota podlahy (topení)"
+      },
+      "min_floor_temp_cooling": {
+        "name": "Min. teplota podlahy (chlazení)"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Teplota"
+      },
+      "humidity": {
+        "name": "Vlhkost"
+      },
+      "min_off_time_heating": {
+        "name": "Min. doba vypnutí (topení)"
+      },
+      "min_off_time_cooling": {
+        "name": "Min. doba vypnutí (chlazení)"
+      },
+      "language": {
+        "name": "Index jazyka displeje"
+      },
+      "out_sensor_probe": {
+        "name": "Externí čidlo"
+      },
+      "out_sensor_type": {
+        "name": "Typ externího čidla"
+      },
+      "schedule_type": {
+        "name": "Typ rozvrhu"
+      },
+      "signal_strength": {
+        "name": "Síla signálu"
+      },
+      "link_quality": {
+        "name": "Kvalita spojení"
+      },
+      "ip_address": {
+        "name": "IP adresa"
+      },
+      "zigbee_channel": {
+        "name": "Kanál Zigbee"
+      },
+      "zigbee_firmware": {
+        "name": "Firmware Zigbee"
+      },
+      "schedule": {
+        "name": "Rozvrh (Po–Ne)"
+      }
+    },
+    "switch": {
+      "child_lock": {
+        "name": "Dětský zámek"
+      },
+      "display_time": {
+        "name": "Zobrazit čas na displeji"
+      },
+      "display_humidity": {
+        "name": "Zobrazit vlhkost na displeji"
+      },
+      "display_floor_temperature": {
+        "name": "Zobrazit teplotu podlahy na displeji"
+      },
+      "valve_protection": {
+        "name": "Ochrana ventilu"
+      },
+      "optimum_start": {
+        "name": "Optimální start"
+      },
+      "optimum_stop": {
+        "name": "Optimální stop"
+      },
+      "unlock_from_thermostat": {
+        "name": "Povolit odemčení na termostatu"
+      },
+      "adjust_setpoint_when_locked": {
+        "name": "Povolit změnu teploty při zamčení"
+      }
+    },
+    "select": {
+      "time_format": {
+        "name": "Formát času",
+        "state": {
+          "24h": "24 h",
+          "12h": "12 h (AM/PM)"
+        }
+      },
+      "temperature_unit": {
+        "name": "Jednotka teploty",
+        "state": {
+          "celsius": "°C",
+          "fahrenheit": "°F"
+        }
+      },
+      "display_resolution": {
+        "name": "Rozlišení displeje",
+        "state": {
+          "0_5": "0,5 °C",
+          "0_1": "0,1 °C"
+        }
+      },
+      "comfort_warm_floor": {
+        "name": "Komfortní teplá podlaha",
+        "state": {
+          "off": "Vypnuto",
+          "level_1": "Úroveň 1",
+          "level_2": "Úroveň 2",
+          "level_3": "Úroveň 3"
+        }
+      },
+      "control_algorithm": {
+        "name": "Algoritmus řízení",
+        "state": {
+          "itlc_underfloor": "ITLC podlahové topení",
+          "itlc_radiators": "ITLC radiátory",
+          "itlc_electrical": "ITLC elektrické",
+          "thb_actuator": "THB pohon"
+        }
+      },
+      "s1_s2_function": {
+        "name": "Vstup S1/S2",
+        "state": {
+          "disabled": "Vypnuto",
+          "floor_sensor": "Podlahové čidlo",
+          "external_sensor": "Externí čidlo",
+          "occupancy_sensor": "Čidlo přítomnosti",
+          "run_onetouch": "Spustit OneTouch",
+          "changeover": "Přepínání režimu"
+        }
+      },
+      "internal_relay_function": {
+        "name": "Vnitřní relé",
+        "state": {
+          "disabled": "Vypnuto",
+          "heat_and_cool": "Topení i chlazení",
+          "heat_only": "Jen topení",
+          "cool_only": "Jen chlazení"
+        }
+      },
+      "relay_contact_type": {
+        "name": "Typ kontaktu relé",
+        "state": {
+          "no_com": "NO-COM",
+          "nc_com": "NC-COM"
+        }
+      },
+      "cooling_control_span": {
+        "name": "Hystereze chlazení",
+        "state": {
+          "0_25": "±0,25 °C",
+          "0_5": "±0,5 °C",
+          "1_0": "±1,0 °C",
+          "1_5": "±1,5 °C",
+          "2_0": "±2,0 °C"
+        }
+      }
+    },
+    "climate": {
+      "thermostat": {
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "schedule": "Podle rozvrhu",
+              "temporary_hold": "Dočasně",
+              "permanent_hold": "Trvale",
+              "away": "Pryč"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "set_schedule": {
+      "name": "Nastavit týdenní rozvrh",
+      "description": "Nahradí program topení termostatu Po–Ne (1–6 spínacích bodů, uložených v termostatu).",
+      "fields": {
+        "points": {
+          "name": "Spínací body",
+          "description": "Seznam {time: \"HH:MM\", temperature: °C}, např. 06:00 → 21 °C, 22:00 → 19 °C."
+        }
+      }
+    }
+  }
+}
