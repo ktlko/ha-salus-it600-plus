@@ -139,3 +139,32 @@ class SalusAuxEntity(CoordinatorEntity[SalusCoordinator]):
     @property
     def flat(self) -> dict[str, Any]:
         return self.info.get("flat", {})
+
+
+class SalusDeviceEntity(SalusAuxEntity):
+    """Entity of a device family found in the Salus app (plug, sensor, TRV, ...).
+
+    Unavailable while the gateway reports the device offline or no longer lists it.
+    """
+
+    @property
+    def available(self) -> bool:
+        return super().available and bool(self.info.get("present") and self.info.get("online"))
+
+    def cl(self, cluster: str) -> dict[str, Any]:
+        return (self.info.get("clusters") or {}).get(cluster) or {}
+
+    def x100(self, cluster: str, prop: str) -> float | None:
+        value = self.cl(cluster).get(prop)
+        return value / 100 if isinstance(value, (int, float)) else None
+
+    async def write_cluster(self, cluster: str, values: dict[str, Any]) -> None:
+        try:
+            await self.coordinator.hub.async_write_cluster(self.device_id, cluster, values)
+        except Exception as err:  # noqa: BLE001
+            raise HomeAssistantError(f"Salus write {cluster} {values} failed: {err}") from err
+        current = (self.info.get("clusters") or {}).get(cluster)
+        if isinstance(current, dict):
+            current.update(values)
+            self.coordinator.async_update_listeners()
+        self.coordinator.schedule_followup_refresh()

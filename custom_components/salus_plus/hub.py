@@ -49,6 +49,9 @@ DIRECT_WRITABLE = frozenset(
 )
 
 
+WRITABLE_CLUSTERS = frozenset({"sTherS", "sComm", "sTherUIS", "sOnOffS", "sLevelS"})
+
+
 class SalusHub:
     """One UGE600 gateway and its SQ610 thermostats."""
 
@@ -59,6 +62,7 @@ class SalusHub:
         self.gateway_device_id: str | None = None  # device-registry id of the UGE600
         self.names: dict[str, str] = {}
         self.models: dict[str, str] = {}
+        self.aux_data: dict[str, dict[str, Any]] = {}  # `data` envelope per non-SQ610 device
 
     async def async_connect(self) -> str:
         """Connect, discover devices and return the gateway unique id."""
@@ -103,12 +107,16 @@ class SalusHub:
             elif "sCoord" in item:
                 result["zc"] = flat
             elif uid:
+                self.aux_data[uid] = item.get("data", {})
                 result["aux"][uid] = {
                     "model": model,
                     "name": _device_name(flat) or known_aux.get(uid, {}).get("name") or model,
                     "present": True,
                     "online": flat.get("OnlineStatus_i") == 1,
                     "flat": flat,
+                    # Per-cluster view: several clusters share property names
+                    # (e.g. sTempS/sHumiS MeasuredValue_x100), so `flat` is not enough.
+                    "clusters": {k: v for k, v in item.items() if k != "data" and isinstance(v, dict)},
                 }
         for uid, info in known_aux.items():
             if uid not in result["aux"]:
@@ -148,6 +156,24 @@ class SalusHub:
             _LOGGER.debug("%s SetHeatSchedule1=%s", device_id, heat_schedule1)
             await self._gateway._write_device(  # noqa: SLF001
                 self._device(device_id), {"sScheS": {"SetHeatSchedule1": heat_schedule1}}
+            )
+
+    async def async_write_cluster(self, device_id: str, cluster: str, values: dict[str, Any]) -> None:
+        """Write `Set<prop>` values to one cluster of a non-sIT600TH device.
+
+        Used for the device families found in the Salus app (sTherS/sComm TRVs and
+        fan-coil thermostats, sOnOffS plugs and relays, sLevelS shutters).
+        """
+        if cluster not in WRITABLE_CLUSTERS:
+            raise ValueError(f"{cluster} is not a writable cluster")
+        data = self.aux_data.get(device_id)
+        if not data:
+            raise ValueError(f"device {device_id} is not reachable")
+        async with self._write_lock:
+            _LOGGER.debug("%s %s %s", device_id, cluster, values)
+            await self._gateway._make_encrypted_request(  # noqa: SLF001 - transport only
+                "write",
+                {"requestAttr": "write", "id": [{"data": data, cluster: {"Set" + k: v for k, v in values.items()}}]},
             )
 
     async def async_write_setting(self, device_id: str, key: str, value: Any) -> None:

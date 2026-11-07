@@ -31,10 +31,53 @@ Gateway and Wiring Centre:
 - KL08RF Wiring Centre zones and pump/boiler demand (derived from the thermostats' demand)
 - boiler receiver: connection and boiler relay
 
+## Supported devices
+
+All devices are paired with a Salus **UGE600** gateway and read over its local API. Device families
+are recognised by the gateway clusters they report, so OEM variants of the same hardware work too.
+
+### Tested
+
+| Device | Entities |
+| --- | --- |
+| **SQ610 / SQ610NH / SQ610RF** Quantum thermostat | climate, settings, schedule, sensors (full list above) |
+| **KL08RF** Wiring Centre (`it600WC`) | connection, problem, signal, zone demand, pump/boiler demand |
+| **RX10RB** boiler receiver (`it600Receiver`) | connection, problem, signal, boiler relay |
+| **UGE600** gateway | cloud / LAN connection, IP address, Zigbee channel and firmware |
+
+### Untested
+
+Added in 1.1.0 from the device catalogue and gateway protocol of the official *SALUS Premium Lite* app.
+They should work, but nobody has tried them with this integration yet – please
+[open an issue](https://github.com/ktlko/ha-salus-it600-plus/issues) with the result and a debug log (see Troubleshooting).
+
+| Device | Gateway clusters | Entities |
+| --- | --- | --- |
+| **VS10 / VS20** (`it600ThermHW`), **HTRP / HTRS / HTR** thermostats, **TS600** | `sIT600TH` | climate (off / heat / presets / setpoint), child lock, setpoint limits, time format, temperature, heating demand |
+| **TRV3RF** SuperQuiet TRV, **FC600** fan coil and other Zigbee 3.0 thermostats | `sTherS`, `sComm`, `sTherUIS` | climate (off / heat (/ cool) / presets / setpoint), child lock, heating demand, floor temperature, battery |
+| **TRV10RFM / it600TRV** TRV paired with a thermostat | `sIT6ZB` | valve opening, valve temperature |
+| **iT600 Mini TRV** (`it600MINITRV`) | `sIT600I` | valve relay |
+| **SP600 / SPE600** smart plug | `sOnOffS` (+ `sMeterS`) | switch (outlet), power and energy (SPE600) |
+| **SR600** smart relay, **SC812ZB / SC824ZB** contact relays | `sOnOffS` | switch |
+| **RS600** roller shutter | `sLevelS` | cover (open / close / position) |
+| **SW600 / OS600** door/window sensor | `sIASZS` | window, tamper, low battery, battery voltage |
+| **WLS600** water leak sensor | `sIASZS` | water leak, low battery |
+| **SmokeSensor-EM**, **SMSZB-120** smoke detector, **HESZB-120** heat detector | `sIASZS` | smoke / heat alarm, tamper, low battery |
+| **CSB600** protective button | `sIASZS` | panic button |
+| **MS600** motion sensor | `sOccupS` | motion |
+| **PS600** remote temperature sensor, **CTLS631 / 632 / 633** | `sTempS`, `sHumiS` | temperature, humidity, battery voltage |
+| **ECM600** energy monitor | `sMeterS` | power, energy |
+
+Every new device also gets *Connected*, *Problem*, *Signal strength* and *Link quality*.
+
+Not supported yet (the app's protocol for them could not be confirmed without the hardware): hot water timers
+(`it600HW`, `sIT600HW`), fan speed of the FC600, SB600 smart button events, SQ605RF dial thermostats, sirens,
+keypads, door locks, lights and dimmers, solar inverters and the US-only devices of the app.
+
 ## Requirements
 
 - Salus **UGE600** gateway with **local mode** (the gateway's *EUID* is printed on its label – 16 characters)
-- Salus **SQ610 / SQ610RF** thermostats paired with the gateway
+- Salus devices paired with the gateway (see [Supported devices](#supported-devices))
 
 ## Installation
 
@@ -63,7 +106,7 @@ configuration (the folder that contains `configuration.yaml`) and restart Home A
 | EUID | 16-character EUID from the gateway label |
 
 If you use the built-in **Salus iT600** integration, both fields are pre-filled from it. All thermostats,
-the Wiring Centre and the boiler receiver are found automatically; newly paired thermostats appear after a reload.
+the Wiring Centre, the boiler receiver and the other devices are found automatically; newly paired devices appear after a reload.
 
 ## Weekly schedule
 

@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Požiadavka na čerpadlo a kotol (odvodené)"
+      },
+      "window": {
+        "name": "Okno"
+      },
+      "door": {
+        "name": "Dvere"
+      },
+      "water_leak": {
+        "name": "Únik vody"
+      },
+      "smoke": {
+        "name": "Dym"
+      },
+      "heat_alarm": {
+        "name": "Tepelný alarm"
+      },
+      "panic": {
+        "name": "Tiesňové tlačidlo"
+      },
+      "alarm": {
+        "name": "Alarm"
+      },
+      "tamper": {
+        "name": "Sabotáž"
+      },
+      "battery_low": {
+        "name": "Slabá batéria"
+      },
+      "motion": {
+        "name": "Pohyb"
+      },
+      "trv_relay": {
+        "name": "Relé ventilu"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Rozvrh (Po–Ne)"
+      },
+      "floor_temperature": {
+        "name": "Teplota podlahy"
+      },
+      "heating_demand": {
+        "name": "Úroveň požiadavky na kúrenie"
+      },
+      "valve_opening": {
+        "name": "Otvorenie ventilu"
+      },
+      "trv_temperature": {
+        "name": "Teplota na ventile"
+      },
+      "battery_voltage": {
+        "name": "Napätie batérie"
+      },
+      "power": {
+        "name": "Príkon"
+      },
+      "energy": {
+        "name": "Energia"
       }
     },
     "switch": {

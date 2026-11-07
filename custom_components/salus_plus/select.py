@@ -10,6 +10,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import SalusConfigEntry
+from .devices import is_sq610
 from .entity import SalusEntity
 
 
@@ -64,6 +65,7 @@ async def async_setup_entry(
         SalusSelect(coordinator, device_id, description)
         for device_id in coordinator.data["th"]
         for description in SELECTS
+        if description.prop or is_sq610(coordinator.hub.models.get(device_id))
     )
 
 

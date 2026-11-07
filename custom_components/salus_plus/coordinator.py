@@ -12,6 +12,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import CONF_AUX_DEVICES, DEFAULT_SCAN_INTERVAL, DOMAIN, REFRESH_DELAYS
+from .devices import remembered
 from .hub import SalusHub
 from .wc import parse_zones
 
@@ -43,6 +44,11 @@ class SalusCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         seen: dict[str, dict[str, Any]] = {}
         for uid, aux in data["aux"].items():
             entry_info: dict[str, Any] = {"model": aux["model"], "name": aux["name"]}
+            # New device families: remember their clusters so an offline device keeps its entities.
+            entry_info.update(
+                remembered(aux) if aux.get("present")
+                else {k: v for k, v in self.known_aux.get(uid, {}).items() if k in ("cluster_names", "props")}
+            )
             zones = parse_zones(aux.get("flat", {}).get("CommandResponse_d"))
             if zones:
                 entry_info["zones"] = [[z.zone, z.short_id] for z in zones]

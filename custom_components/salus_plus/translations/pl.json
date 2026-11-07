@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Żądanie pompy i kotła (pochodne)"
+      },
+      "window": {
+        "name": "Okno"
+      },
+      "door": {
+        "name": "Drzwi"
+      },
+      "water_leak": {
+        "name": "Wyciek wody"
+      },
+      "smoke": {
+        "name": "Dym"
+      },
+      "heat_alarm": {
+        "name": "Alarm temperatury"
+      },
+      "panic": {
+        "name": "Przycisk alarmowy"
+      },
+      "alarm": {
+        "name": "Alarm"
+      },
+      "tamper": {
+        "name": "Sabotaż"
+      },
+      "battery_low": {
+        "name": "Słaba bateria"
+      },
+      "motion": {
+        "name": "Ruch"
+      },
+      "trv_relay": {
+        "name": "Przekaźnik zaworu"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Harmonogram (pon.–niedz.)"
+      },
+      "floor_temperature": {
+        "name": "Temperatura podłogi"
+      },
+      "heating_demand": {
+        "name": "Poziom zapotrzebowania na grzanie"
+      },
+      "valve_opening": {
+        "name": "Otwarcie zaworu"
+      },
+      "trv_temperature": {
+        "name": "Temperatura przy zaworze"
+      },
+      "battery_voltage": {
+        "name": "Napięcie baterii"
+      },
+      "power": {
+        "name": "Moc"
+      },
+      "energy": {
+        "name": "Energia"
       }
     },
     "switch": {

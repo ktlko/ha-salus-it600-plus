@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Pump and boiler demand (derived)"
+      },
+      "window": {
+        "name": "Window"
+      },
+      "door": {
+        "name": "Door"
+      },
+      "water_leak": {
+        "name": "Water leak"
+      },
+      "smoke": {
+        "name": "Smoke"
+      },
+      "heat_alarm": {
+        "name": "Heat alarm"
+      },
+      "panic": {
+        "name": "Panic button"
+      },
+      "alarm": {
+        "name": "Alarm"
+      },
+      "tamper": {
+        "name": "Tamper"
+      },
+      "battery_low": {
+        "name": "Low battery"
+      },
+      "motion": {
+        "name": "Motion"
+      },
+      "trv_relay": {
+        "name": "Valve relay"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Schedule (Mon–Sun)"
+      },
+      "floor_temperature": {
+        "name": "Floor temperature"
+      },
+      "heating_demand": {
+        "name": "Heating demand level"
+      },
+      "valve_opening": {
+        "name": "Valve opening"
+      },
+      "trv_temperature": {
+        "name": "Valve temperature"
+      },
+      "battery_voltage": {
+        "name": "Battery voltage"
+      },
+      "power": {
+        "name": "Power"
+      },
+      "energy": {
+        "name": "Energy"
       }
     },
     "switch": {

@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Pumpen- und Kesselanforderung (abgeleitet)"
+      },
+      "window": {
+        "name": "Fenster"
+      },
+      "door": {
+        "name": "Tür"
+      },
+      "water_leak": {
+        "name": "Wasserleck"
+      },
+      "smoke": {
+        "name": "Rauch"
+      },
+      "heat_alarm": {
+        "name": "Hitzealarm"
+      },
+      "panic": {
+        "name": "Notruftaste"
+      },
+      "alarm": {
+        "name": "Alarm"
+      },
+      "tamper": {
+        "name": "Manipulation"
+      },
+      "battery_low": {
+        "name": "Batterie schwach"
+      },
+      "motion": {
+        "name": "Bewegung"
+      },
+      "trv_relay": {
+        "name": "Ventilrelais"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Zeitprogramm (Mo–So)"
+      },
+      "floor_temperature": {
+        "name": "Bodentemperatur"
+      },
+      "heating_demand": {
+        "name": "Heizbedarf"
+      },
+      "valve_opening": {
+        "name": "Ventilöffnung"
+      },
+      "trv_temperature": {
+        "name": "Ventiltemperatur"
+      },
+      "battery_voltage": {
+        "name": "Batteriespannung"
+      },
+      "power": {
+        "name": "Leistung"
+      },
+      "energy": {
+        "name": "Energie"
       }
     },
     "switch": {

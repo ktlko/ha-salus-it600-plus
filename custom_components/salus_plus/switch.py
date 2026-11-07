@@ -5,13 +5,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from homeassistant.components.switch import SwitchEntity, SwitchEntityDescription
+from homeassistant.components.switch import SwitchDeviceClass, SwitchEntity, SwitchEntityDescription
 from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import SalusConfigEntry
-from .entity import SalusEntity
+from .devices import has_prop, is_climate, is_sq610, is_switch
+from .entity import SalusDeviceEntity, SalusEntity
 
 
 @dataclass(frozen=True, kw_only=True)
@@ -42,11 +43,19 @@ async def async_setup_entry(
     hass: HomeAssistant, entry: SalusConfigEntry, async_add_entities: AddConfigEntryEntitiesCallback
 ) -> None:
     coordinator = entry.runtime_data
-    async_add_entities(
+    entities: list[SwitchEntity] = [
         SalusSwitch(coordinator, device_id, description)
         for device_id in coordinator.data["th"]
         for description in SWITCHES
-    )
+        # B11 settings exist only on the SQ610 family; other iT600 thermostats keep the lock.
+        if description.prop or is_sq610(coordinator.hub.models.get(device_id))
+    ]
+    for device_id, info in coordinator.data["aux"].items():
+        if is_switch(info):
+            entities.append(DeviceSwitch(coordinator, device_id))
+        if is_climate(info) and has_prop(info, "sTherUIS", "LockKey"):
+            entities.append(DeviceChildLock(coordinator, device_id))
+    async_add_entities(entities)
 
 
 class SalusSwitch(SalusEntity, SwitchEntity):
@@ -76,3 +85,47 @@ class SalusSwitch(SalusEntity, SwitchEntity):
 
     async def async_turn_off(self, **kwargs: Any) -> None:
         await self._set(False)
+
+
+class DeviceSwitch(SalusDeviceEntity, SwitchEntity):
+    """SP600/SPE600 smart plug or SR600 smart relay (sOnOffS)."""
+
+    _attr_name = None
+
+    def __init__(self, coordinator, device_id: str) -> None:
+        super().__init__(coordinator, device_id, "switch")
+        model = (self.info.get("model") or "").upper()
+        self._attr_device_class = (
+            SwitchDeviceClass.OUTLET if model.startswith(("SP", "CTLP", "SX885")) else SwitchDeviceClass.SWITCH
+        )
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self.cl("sOnOffS").get("OnOff")
+        return None if value is None else bool(value)
+
+    async def async_turn_on(self, **kwargs: Any) -> None:
+        await self.write_cluster("sOnOffS", {"OnOff": 1})
+
+    async def async_turn_off(self, **kwargs: Any) -> None:
+        await self.write_cluster("sOnOffS", {"OnOff": 0})
+
+
+class DeviceChildLock(SalusDeviceEntity, SwitchEntity):
+    """Keypad lock of a Zigbee 3.0 thermostat / TRV (sTherUIS.LockKey)."""
+
+    _attr_entity_category = EntityCategory.CONFIG
+
+    def __init__(self, coordinator, device_id: str) -> None:
+        super().__init__(coordinator, device_id, "child_lock")
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self.cl("sTherUIS").get("LockKey")
+        return None if value is None else bool(value)
+
+    async def async_turn_on(self, **kwargs: Any) -> None:
+        await self.write_cluster("sTherUIS", {"LockKey": 1})
+
+    async def async_turn_off(self, **kwargs: Any) -> None:
+        await self.write_cluster("sTherUIS", {"LockKey": 0})

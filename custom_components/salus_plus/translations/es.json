@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Demanda de bomba y caldera (derivada)"
+      },
+      "window": {
+        "name": "Ventana"
+      },
+      "door": {
+        "name": "Puerta"
+      },
+      "water_leak": {
+        "name": "Fuga de agua"
+      },
+      "smoke": {
+        "name": "Humo"
+      },
+      "heat_alarm": {
+        "name": "Alarma de calor"
+      },
+      "panic": {
+        "name": "Botón de pánico"
+      },
+      "alarm": {
+        "name": "Alarma"
+      },
+      "tamper": {
+        "name": "Manipulación"
+      },
+      "battery_low": {
+        "name": "Batería baja"
+      },
+      "motion": {
+        "name": "Movimiento"
+      },
+      "trv_relay": {
+        "name": "Relé de válvula"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Programación (lun.–dom.)"
+      },
+      "floor_temperature": {
+        "name": "Temperatura del suelo"
+      },
+      "heating_demand": {
+        "name": "Nivel de demanda de calefacción"
+      },
+      "valve_opening": {
+        "name": "Apertura de válvula"
+      },
+      "trv_temperature": {
+        "name": "Temperatura en la válvula"
+      },
+      "battery_voltage": {
+        "name": "Tensión de la batería"
+      },
+      "power": {
+        "name": "Potencia"
+      },
+      "energy": {
+        "name": "Energía"
       }
     },
     "switch": {

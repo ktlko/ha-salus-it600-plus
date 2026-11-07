@@ -16,6 +16,7 @@ from .hub import SalusHub
 PLATFORMS = [
     Platform.BINARY_SENSOR,
     Platform.CLIMATE,
+    Platform.COVER,
     Platform.NUMBER,
     Platform.SELECT,
     Platform.SENSOR,

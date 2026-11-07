@@ -10,7 +10,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from . import SalusConfigEntry
-from .entity import SalusAuxEntity, SalusEntity, SalusGatewayEntity
+from .devices import LEGACY_AUX_MODELS, features, has_prop, ias_kind
+from .entity import SalusAuxEntity, SalusDeviceEntity, SalusEntity, SalusGatewayEntity
 
 RECEIVER_MODEL = "it600Receiver"
 
@@ -32,6 +33,7 @@ async def async_setup_entry(
             entities.append(WcDemand(coordinator, device_id, "wc_demand"))
             for zone, _short in info["zones"]:
                 entities.append(WcZoneDemand(coordinator, device_id, zone))
+        entities.extend(_device_binary_sensors(coordinator, device_id, info))
     if coordinator.hub.gateway_id:
         entities.append(GatewayFlag(coordinator, "cloud_connected", "CloudStatus"))
         entities.append(GatewayFlag(coordinator, "lan_connected", "LANConnected_d"))
@@ -65,7 +67,8 @@ class AuxProblem(SalusAuxEntity, BinarySensorEntity):
     def _errors(self) -> list[str]:
         errors = [k for k, v in self.flat.items()
                   if (k.startswith("Error") or k.startswith("TRVError"))
-                  and k != "ErrorCodeWC_d" and v not in (0, None)]
+                  and k != "ErrorCodeWC_d" and not k.startswith("ErrorIASZSAlarmed")
+                  and v not in (0, None)]
         code = self.flat.get("ErrorCodeWC_d")
         if code not in (None, "0000"):
             errors.append(f"ErrorCodeWC_d={code}")
@@ -199,3 +202,70 @@ class SalusProblem(SalusEntity, BinarySensorEntity):
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         return {"active_errors": self._errors}
+
+
+IAS_DEVICE_CLASS = {
+    "window": BinarySensorDeviceClass.WINDOW,
+    "door": BinarySensorDeviceClass.DOOR,
+    "water_leak": BinarySensorDeviceClass.MOISTURE,
+    "smoke": BinarySensorDeviceClass.SMOKE,
+    "heat_alarm": BinarySensorDeviceClass.HEAT,
+    "panic": BinarySensorDeviceClass.SAFETY,
+    "alarm": BinarySensorDeviceClass.SAFETY,
+}
+
+
+def _device_binary_sensors(coordinator, device_id: str, info: dict[str, Any]) -> list[BinarySensorEntity]:
+    """Binary sensors of the device families found in the Salus app."""
+    found: list[BinarySensorEntity] = []
+    f = features(info)
+    if kind := ias_kind(info):
+        found.append(DeviceFlag(coordinator, device_id, kind, "sIASZS", "ErrorIASZSAlarmed1",
+                                IAS_DEVICE_CLASS[kind]))
+    if "sIASZS" in f and has_prop(info, "sIASZS", "ErrorIASZSTampered"):
+        found.append(DeviceFlag(coordinator, device_id, "tamper", "sIASZS", "ErrorIASZSTampered",
+                                BinarySensorDeviceClass.TAMPER, diagnostic=True))
+    for cluster, prop in (("sIASZS", "ErrorIASZSLowBattery"), ("sPowerS", "ErrorPowerSLowBattery")):
+        if cluster in f and has_prop(info, cluster, prop):
+            found.append(DeviceFlag(coordinator, device_id, "battery_low", cluster, prop,
+                                    BinarySensorDeviceClass.BATTERY, diagnostic=True))
+            break
+    if "sOccupS" in f and has_prop(info, "sOccupS", "Occupancy"):
+        found.append(DeviceFlag(coordinator, device_id, "motion", "sOccupS", "Occupancy",
+                                BinarySensorDeviceClass.MOTION))
+    if info.get("model") not in LEGACY_AUX_MODELS and has_prop(info, "sIT600I", "RelayStatus"):
+        # iT600 Mini TRV relay.
+        found.append(DeviceFlag(coordinator, device_id, "trv_relay", "sIT600I", "RelayStatus",
+                                BinarySensorDeviceClass.HEAT))
+    if "sTherS" in f and has_prop(info, "sTherS", "RunningState"):
+        found.append(DeviceRunning(coordinator, device_id, "running"))
+    return found
+
+
+class DeviceFlag(SalusDeviceEntity, BinarySensorEntity):
+    """One 0/1 property of a cluster (alarm, tamper, low battery, motion, relay)."""
+
+    def __init__(self, coordinator, device_id: str, key: str, cluster: str, prop: str,
+                 device_class: BinarySensorDeviceClass, diagnostic: bool = False) -> None:
+        super().__init__(coordinator, device_id, key)
+        self._cluster = cluster
+        self._prop = prop
+        self._attr_device_class = device_class
+        if diagnostic:
+            self._attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self.cl(self._cluster).get(self._prop)
+        return None if value is None else bool(value)
+
+
+class DeviceRunning(SalusDeviceEntity, BinarySensorEntity):
+    """Heating demand of a Zigbee 3.0 thermostat / TRV (sTherS.RunningState)."""
+
+    _attr_device_class = BinarySensorDeviceClass.HEAT
+
+    @property
+    def is_on(self) -> bool | None:
+        value = self.cl("sTherS").get("RunningState")
+        return None if value is None else bool(value)

@@ -42,6 +42,39 @@
       },
       "wc_demand": {
         "name": "Richiesta pompa e caldaia (derivata)"
+      },
+      "window": {
+        "name": "Finestra"
+      },
+      "door": {
+        "name": "Porta"
+      },
+      "water_leak": {
+        "name": "Perdita d'acqua"
+      },
+      "smoke": {
+        "name": "Fumo"
+      },
+      "heat_alarm": {
+        "name": "Allarme calore"
+      },
+      "panic": {
+        "name": "Pulsante antipanico"
+      },
+      "alarm": {
+        "name": "Allarme"
+      },
+      "tamper": {
+        "name": "Manomissione"
+      },
+      "battery_low": {
+        "name": "Batteria scarica"
+      },
+      "motion": {
+        "name": "Movimento"
+      },
+      "trv_relay": {
+        "name": "Relè valvola"
       }
     },
     "number": {
@@ -115,6 +148,27 @@
       },
       "schedule": {
         "name": "Programma (lun–dom)"
+      },
+      "floor_temperature": {
+        "name": "Temperatura pavimento"
+      },
+      "heating_demand": {
+        "name": "Livello richiesta riscaldamento"
+      },
+      "valve_opening": {
+        "name": "Apertura valvola"
+      },
+      "trv_temperature": {
+        "name": "Temperatura valvola"
+      },
+      "battery_voltage": {
+        "name": "Tensione batteria"
+      },
+      "power": {
+        "name": "Potenza"
+      },
+      "energy": {
+        "name": "Energia"
       }
     },
     "switch": {
