@@ -49,7 +49,7 @@ are recognised by the gateway clusters they report, so OEM variants of the same 
 
 Added in 1.1.0 from the device catalogue and gateway protocol of the official *SALUS Premium Lite* app.
 They should work, but nobody has tried them with this integration yet – please
-[open an issue](https://github.com/ktlko/ha-salus-it600-plus/issues) with the result and a debug log (see Troubleshooting).
+[open an issue](https://github.com/ktlko/ha-salus-it600-plus/issues) with the result and the diagnostics file (see Troubleshooting).
 
 | Device | Gateway clusters | Entities |
 | --- | --- | --- |
